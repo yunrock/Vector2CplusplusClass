@@ -13,7 +13,7 @@
  * 
  * <<IMPORTANT NOTE>> 
  * I use prefix: t_ to name parameters, m_ to name members, 
- * r to name references (without _), and p to name pointers (without _).
+ * (without _) s to name statics, r to name references, and p to name pointers.
  */
 #include <iostream>
 #include <math.h>
@@ -24,6 +24,11 @@ using std::cout;
 namespace Vector2D {
   class Vector2 {
     private:
+      float m_xValue;
+      float m_yValue;
+      float m_magnitude;
+      float m_direction; 
+
       /**
        * This is a private class that allows Vector2 class to know if any coordenate
        * was changed by the operator "=". To do this, is necesary handle the value
@@ -33,48 +38,58 @@ namespace Vector2D {
         private:
           float& m_rValue; /**< Reference to the Vector2 coordinate value */
           Vector2* m_pParent;
-      
-        public:
-          Coordenate(float& t_value, Vector2* t_m_pParent) : m_rValue(t_value), m_pParent(t_m_pParent) {}
-  
-          Coordenate& operator=(const float& t_val) {
-            m_rValue = t_val;
-            m_pParent->Magnitude();
-            return *this;
-          }
-  
+          Coordenate(float& t_value, Vector2* t_m_pParent) : 
+                     m_rValue(t_value), m_pParent(t_m_pParent) {}
           operator const float& () const { 
             return m_rValue; 
           }
-  
-          friend class Vector2;
+      
+        public:
+          Coordenate& operator=(const float& t_val) {
+            m_rValue = t_val;
+            m_pParent->m_Magnitude();
+            m_pParent->m_Direction();
+            return *this;
+          }
+        friend class Vector2;
       };
-  
-      float m_x;
-      float m_y;
-      float m_magnitude;
     
-      void Magnitude() {
-        m_magnitude = sqrt( (pow(m_x,2) + pow(m_y, 2)) );
-      }
+      void m_Magnitude();
+      void m_Direction();
   
     public:
       Coordenate x, y;
-      Vector2(float t_x, float t_y) : x(m_x, this), y(m_y, this) {
+      Vector2(float t_x, float t_y) : x(m_xValue, this), y(m_yValue, this) {
         x = t_x;
         y = t_y;
-        //Magnitude();
       }
       float magnitude();
+      float direction(); 
+      void normalize(); 
       void operator =(const Vector2& t_rVector);
       Vector2 operator *(const float& t_rScalar);
       Vector2 operator +(const Vector2& t_rVector);
       Vector2 operator -(const Vector2& t_rVector);
+      static float sDotProduct(const Vector2& t_rVector1, const Vector2& t_rVector2);
   };
 }
 
 
 using namespace Vector2D;
+
+/**
+ *
+ */
+void Vector2::m_Magnitude() {
+  m_magnitude = sqrt( (pow(m_xValue,2) + pow(m_yValue, 2)) );
+}
+
+/**
+ *
+ */
+void Vector2::m_Direction() {
+        
+}
 
 /**
  *
@@ -86,11 +101,50 @@ float Vector2::magnitude() {
 /**
  *
  */
-void Vector2::operator =(const Vector2& t_rVector) {
-  this->x = t_rVector.m_x;
-  this->y = t_rVector.m_y;
+float Vector2::direction() {
+  return m_direction;
 }
 
+/**
+ *
+ */
+void Vector2::normalize() {
+  
+}
+
+/**
+ * 
+ * @param
+ */
+void Vector2::operator =(const Vector2& t_rVector) {
+  this->x = t_rVector.m_xValue;
+  this->y = t_rVector.m_yValue;
+}
+
+/**
+ * 
+ * @param
+ * @return
+ */
 Vector2 Vector2::operator *(const float& t_rScalar) {
   return Vector2(this->x * t_rScalar, this->y * t_rScalar);
+}
+
+/**
+ * 
+ * @param
+ * @return
+ */
+Vector2 Vector2::operator +(const Vector2& t_rVector) {
+  return Vector2(this->x + t_rVector.m_xValue, this->y + t_rVector.m_yValue);
+}
+
+/**
+ * 
+ * @param
+ * @param
+ * @return
+ */
+float Vector2::sDotProduct(const Vector2& t_rVector1, const Vector2& t_rVector2) {
+  return (t_rVector1.m_xValue * t_rVector2.m_xValue) + (t_rVector1.m_yValue * t_rVector2.m_yValue);
 }
