@@ -72,10 +72,7 @@ namespace Vector2D {
       Vector2 operator -(const Vector2& t_rVector);
   };
 }
-/*
-float Vector2::m_x = 0;
-float Vector2::m_y = 0;
-float Vector2::m_magnitude = 0;*/
+
 
 using namespace Vector2D;
 
