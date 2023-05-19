@@ -3,14 +3,14 @@
 using namespace Vector2D;
 
 /**
- * Member function that calculates the magnitud of the vector
+ * @brief Member function that calculates the magnitud of the vector
  */
 void Vector2::m_Magnitude() {
   m_magnitude = sqrt( (pow(m_xValue,2) + pow(m_yValue, 2)) );
 }
 
 /**
- * Member function that calculates the direction of the vector
+ * @brief Member function that calculates the direction of the vector
  */
 void Vector2::m_Direction() {
   if (m_xValue == 0) {
@@ -45,7 +45,7 @@ float Vector2::direction() {
 }
 
 /**
- * Normalizes the current vector
+ * @brief Normalizes the current vector
  */
 void Vector2::normalize() {
   x = m_xValue / m_magnitude;  
@@ -53,7 +53,7 @@ void Vector2::normalize() {
 }
 
 /**
- * Rotates the current vector based in the formula
+ * @brief Rotates the current vector based in the formula
  * x' = x * cos(t_rAngle) - y * sen(t_rAngle) 
  * y' = x * sen(t_rAngle) + y * cos(t_rAngle) 
  * @param t_rAngle is the angle to rotate the vector
@@ -64,7 +64,7 @@ void Vector2::rotate(const float& t_rAngle) {
 }
 
 /**
- * Asigns the values of the parameter vector to the current vector 
+ * @brief Asigns the values of the parameter vector to the current vector 
  * @param t_rVector vector from wich values will be copied
  */
 void Vector2::operator =(const Vector2& t_rVector) {
@@ -73,7 +73,7 @@ void Vector2::operator =(const Vector2& t_rVector) {
 }
 
 /**
- * Sum of two vectors
+ * @brief Sum of two vectors
  * @param t_rVector is a constant reference
  * @return a new Vector2 object 
  */
@@ -82,7 +82,7 @@ Vector2 Vector2::operator +(const Vector2& t_rVector) {
 }
 
 /**
- * substraction of two vectors
+ * @brief Substraction of two vectors
  * @param t_rVector is a constant reference
  * @return a new Vector2 object 
  */
@@ -91,7 +91,7 @@ Vector2 Vector2::operator -(const Vector2& t_rVector) {
 }
 
 /**
- * Scalar product
+ * @brief Scalar product
  * @param t_rScalar const float reference
  * @return a new Vector2 object
  */
@@ -100,7 +100,7 @@ Vector2 Vector2::operator *(const float& t_rScalar) {
 }
 
 /**
- * Division by a number
+ * @brief Division by a number
  * @param t_rScalar const float reference
  * @return a new Vector2 object
  */
@@ -109,7 +109,7 @@ Vector2 Vector2::operator /(const float& t_rScalar) {
 }
 
 /**
- * Replace the coordinates values by the adition of the @param
+ * @brief Replace the coordinates values by the adition of the @param
  * @param t_rVector is a constant reference
  */
 void Vector2::operator +=(const Vector2& t_rVector) {
@@ -118,7 +118,7 @@ void Vector2::operator +=(const Vector2& t_rVector) {
 }
 
 /**
- * Replace the coordinates values by the substraction of the @param
+ * @brief Replace the coordinates values by the substraction of the @param
  * @param t_rVector is a constant reference
  */
 void Vector2::operator -=(const Vector2& t_rVector) {
@@ -127,7 +127,7 @@ void Vector2::operator -=(const Vector2& t_rVector) {
 }
 
 /**
- * Replace the coordinates values by the scalar product of the @param
+ * @brief Replace the coordinates values by the scalar product of the @param
  * @param t_rScalar const float reference
  */
 void Vector2::operator *=(const float& t_rScalar) {
@@ -136,7 +136,7 @@ void Vector2::operator *=(const float& t_rScalar) {
 }
 
 /**
- * Replace the coordinates values by the adition of the @param
+ * @brief Replace the coordinates values by the adition of the @param
  * @param t_rScalar const float reference
  */
 void Vector2::operator /=(const float& t_rScalar) {
@@ -145,7 +145,7 @@ void Vector2::operator /=(const float& t_rScalar) {
 }
 
 /**
- * Compares the coordinates by the @param coordinates
+ * @brief Compares the coordinates by the @param coordinates
  * @param t_rVector to be compared by values
  * @return return true if x = @param.x AND y = @param.y
  */
@@ -154,7 +154,7 @@ bool Vector2::operator ==(const Vector2& t_rVector) {
 }
 
 /**
- * Compares the coordinates by the @param coordinates
+ * @brief Compares the coordinates by the @param coordinates
  * @param t_rVector to be compared by values
  * @return return false if x = @param.x AND y = @param.y
  */
@@ -163,7 +163,7 @@ bool Vector2::operator !=(const Vector2& t_rVector) {
 }
 
 /**
- * Compares the magnitude whit the @param magnitude
+ * @brief Compares the magnitude whit the @param magnitude
  * @param t_rVector to be compared by magnitude
  * @return return true if the magnitud of vector 
  * is strictly less than the @param magnitude
@@ -173,7 +173,7 @@ bool Vector2::operator <(const Vector2& t_rVector) {
 }
 
 /**
- * Compares the magnitude whit the @param magnitude
+ * @brief Compares the magnitude whit the @param magnitude
  * @param t_rVector to be compared by magnitude
  * @return return true if the magnitud of vector 
  * is strictly bigger than the @param magnitude
@@ -183,7 +183,7 @@ bool Vector2::operator >(const Vector2& t_rVector) {
 }
 
 /**
- * Compares the magnitude whit the @param magnitude
+ * @brief Compares the magnitude whit the @param magnitude
  * @param t_rVector to be compared by magnitude
  * @return return true if the magnitud of vector 
  * is less or equals than the @param magnitude
@@ -193,7 +193,7 @@ bool Vector2::operator <=(const Vector2& t_rVector) {
 }
 
 /**
- * Compares the magnitude whit the @param magnitude
+ * @brief Compares the magnitude whit the @param magnitude
  * @param t_rVector to be compared by magnitude
  * @return return true if the magnitud of vector 
  * is bigger or equals than the @param magnitude
@@ -203,7 +203,7 @@ bool Vector2::operator >=(const Vector2& t_rVector) {
 }
 
 /**
- * Dot product
+ * @brief Dot product is a static function
  * @param t_rVector1 is a constant reference
  * @param t_rVector2 is a constant reference
  * @return float
@@ -213,7 +213,7 @@ float Vector2::dotProduct(const Vector2& t_rVector1, const Vector2& t_rVector2) 
 }
 
 /**
- * Distance between two vectors
+ * @brief Distance between two vectors
  * @param t_rVector1 is a constant reference
  * @param t_rVector2 is a constant reference
  * @return float
@@ -228,7 +228,7 @@ float Vector2::distance(const Vector2& t_rVector1, const Vector2& t_rVector2) {
 }
 
 /**
- * Calculates the angle between two vectors using @see dotPtoduct
+ * @brief Calculates the angle between two vectors using @see dotPtoduct
  * @param t_rVector1 is a constant reference
  * @param t_rVector2 is a constant reference
  * @return float resulting of acos(dotPtoduct(t_rVector1, t_rVector2) / product of their magnitudes)
@@ -243,7 +243,7 @@ float Vector2::angleBetween(const Vector2& t_rVector1, const Vector2& t_rVector2
 }
 
 /**
- * Rotates a vector through @param angle
+ * @brief Rotates a vector through @param angle
  * @param t_rVector1 is a constant reference
  * @param t_rfloat is a constant reference
  * @return new vector @param angle rotated
