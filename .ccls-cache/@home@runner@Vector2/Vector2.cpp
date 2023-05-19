@@ -204,12 +204,22 @@ bool Vector2::operator >=(const Vector2& t_rVector) {
 
 /**
  * @brief Dot product is a static function
- * @param t_rVector1 is a constant reference
- * @param t_rVector2 is a constant reference
- * @return float
+ * @param t_rVector1 is a constant reference (v1)
+ * @param t_rVector2 is a constant reference (v2)
+ * @return float = (v1.x * v2.x) + (v1.y * v2.y)
  */
 float Vector2::dotProduct(const Vector2& t_rVector1, const Vector2& t_rVector2) {
   return (t_rVector1.m_xValue * t_rVector2.m_xValue) + (t_rVector1.m_yValue * t_rVector2.m_yValue);
+}
+
+/**
+ * @brief Cross product is a static function
+ * @param t_rVector1 is a constant reference (v1)
+ * @param t_rVector2 is a constant reference (v2)
+ * @return float = (v1.x * v2.y) - (v2.y * v2.x)
+ */
+float Vector2::crossProduct(const Vector2& t_rVector1, const Vector2& t_rVector2) {
+  return (t_rVector1.m_xValue * t_rVector2.m_yValue) - (t_rVector1.m_yValue * t_rVector2.m_xValue);
 }
 
 /**
@@ -251,4 +261,15 @@ float Vector2::angleBetween(const Vector2& t_rVector1, const Vector2& t_rVector2
 Vector2 Vector2::rotate(const Vector2& t_rVector1, const float& t_rAngle) {
   return Vector2((cos(t_rAngle) * t_rVector1.m_xValue) - (sin(t_rAngle) * t_rVector1.m_yValue),
                  (sin(t_rAngle) * t_rVector1.m_xValue) + (cos(t_rAngle) * t_rVector1.m_yValue));
+}
+
+/**
+ * @brief normalize a new instance that is a copy of @param vector
+ * @param t_rVector1 is a constant reference
+ * @return normalized copy of @param 
+ */
+Vector2 Vector2::normalize(const Vector2& t_rVector1) {
+  Vector2 tmp(t_rVector1.x, t_rVector1.y); 
+  tmp.normalize();
+  return tmp;
 }

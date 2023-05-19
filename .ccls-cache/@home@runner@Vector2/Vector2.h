@@ -26,8 +26,6 @@
 #include <iostream>
 #include <math.h>
 
-using std::cout;
-
 
 namespace Vector2D {
   class Vector2 {
@@ -119,8 +117,10 @@ namespace Vector2D {
       bool operator >=(const Vector2& t_rVector);
 
       static float dotProduct(const Vector2& t_rVector1, const Vector2& t_rVector2);
+      static float crossProduct(const Vector2& t_rVector1, const Vector2& t_rVector2);
       static float distance(const Vector2& t_rVector1, const Vector2& t_rVector2);
       static float angleBetween(const Vector2& t_rVector1, const Vector2& t_rVector2); 
       static Vector2 rotate(const Vector2& t_rVector, const float& t_rAngle); 
+      static Vector2 normalize(const Vector2& t_rVector); 
   };
 }
