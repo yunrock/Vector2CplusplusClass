@@ -6,7 +6,7 @@ using namespace Vector2D;
  * @brief Member function that calculates the magnitud of the vector
  */
 void Vector2::m_Magnitude() {
-  m_magnitude = sqrt( (pow(m_xValue,2) + pow(m_yValue, 2)) );
+  m_magnitude = sqrt( (pow(m_xValue, 2) + pow(m_yValue, 2)) );
 }
 
 /**
@@ -48,8 +48,9 @@ float Vector2::direction() {
  * @brief Normalizes the current vector
  */
 void Vector2::normalize() {
-  x = m_xValue / m_magnitude;  
-  y = m_yValue / m_magnitude;  
+  float tmpMagnitude = m_magnitude;
+  x = m_xValue / tmpMagnitude;  
+  y = m_yValue / tmpMagnitude;  
 }
 
 /**
